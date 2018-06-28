@@ -140,8 +140,14 @@
             font-size: 16px;
             padding: 0 12px;
         }
+        .content {
+            position: relative;
+        }
         .main-nav {
             border-bottom: 2px solid #ff0036;
+        }
+        .left-nav {
+            z-index: 1;
         }
         .clean {
             clear: both;
@@ -174,6 +180,9 @@
             top: 0;
             left: 325px;
         }
+        .normal-nav {
+            z-index: 1;
+        }
         .nav-ul {
             position: absolute;
             top: 0;
@@ -200,6 +209,41 @@
         }
         .fp-iconfont {
             margin: 0 4px 0 14px;
+        }
+        .banner {
+            z-index: -1;
+        }
+        .banner-slide {
+            position: absolute;
+            top: 38px;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+        }
+        .banner-slide img {
+            object-fit: cover;
+        }
+        .dots {
+            position: relative;
+            margin: -40px auto 0;
+            /* background-color: red; */
+            z-index: 100;
+            height: 18px;
+            text-align: center;
+        }
+        .dots li {
+            background: #000;
+            width: 25px;
+            height: 5px;
+            display: inline-block;
+            overflow: hidden;
+            margin-left: 5px;
+            cursor: pointer;
+            opacity: .3;
+        }
+        .dots span.active {
+            box-shadow: 0 0 0 2px rgba(7, 17, 27, 0.4) inset;
+            background: #fff;
         }
     </style>
 </head>
@@ -350,7 +394,7 @@
                 </div>
             </div>
         </div>
-        <div class="w">
+        <div class="left-nav w">
             <div class="pannel-normal">
                 <ul class="normal-nav">
                     <li class="nav-item">
@@ -361,97 +405,125 @@
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">男装</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">运动户外</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">女鞋</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">男鞋</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">箱包</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">美妆</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">个人护理</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">腕表</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">眼睛</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">珠宝饰品</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">手机</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">数码</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">电脑办公</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
-                        <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">母婴玩具</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">零食</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">茶酒</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">进口食品</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
-                        <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">生鲜水果</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">大家电</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">生活器材</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
-                        <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">家具建材</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">汽车</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">配件</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">用品</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">家纺</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">家饰</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">鲜花</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
-                        <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">医药保健</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
+                        <a href="#" class="nav-item-a">厨具</a>
                         <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">收纳</a>
+                        <a href="#" class="nav-item-a">/</a>
+                        <a href="#" class="nav-item-a">宠物</a>
                     </li>
                     <li class="nav-item">
                         <i class="fp-iconfont"></i>
-                        <a href="#" class="nav-item-a">女装</a>
-                        <a href="#" class="nav-item-a">/</a>
-                        <a href="#" class="nav-item-a">内衣</a>
+                        <a href="#" class="nav-item-a">图书音像</a>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- 轮播图 -->
+        <div class="banner" id="banner">
+            <a href="#">
+                <div class="banner-slide slide1 slide-active">
+                    <img src="./img/lunbo11.png" alt="" height="500px" width="100%">
+                </div>
+            </a>
+            <a href="#">
+                <div class="banner-slide" slide2>
+                    <img src="./img/lunbo33.png" alt="" height="500px" width="100%">
+                </div>
+            </a>
+            <a href="#">
+                <div class="banner-slide" slide3>
+                    <img src="./img/lunbo22.png" alt="" height="500px" width="100%">
+                </div>
+            </a>
+        </div>
+        <div class="dots" id="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
     </div>
+    <script src="./JS/script1.js"></script>
 </body>
 </html>
