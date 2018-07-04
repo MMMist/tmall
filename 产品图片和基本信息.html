@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <style>
+        .categoryPageDiv {
+            width: 1013px;
+            margin: 0 auto;
+        }
+        .imgAndInfo {
+            margin: 40px 20px;
+        }
+
+        .imgInimgAndInfo {
+            width: 400px;
+            float: left;
+        }
+
+        .bigImg {
+            width: 400px;
+            height: 400px;
+            padding: 5px;
+            border: 1px solid #f2f2f2;
+        }
+
+        .smallImageDiv {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .smallImageDiv img {
+            width: 60px;
+            height: 60px;
+            border: 2px solid white;
+        }
+
+        .smallImageDiv img:hover {
+            border: 2px solid black;
+        }
+        .infoInimgAndInfo {
+            padding: 0 20px;
+            float: left;
+        }
+        .productTitle {
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .productSubTitle {
+            color: #dd2727;
+            font-size: 12px;
+            margin: 0 10px;
+        }
+        .juhuasuan {
+            background-color: #2da77a;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            margin-top: 10px;
+            width: 553px;
+            height: 40px;
+        }
+        .juhuasuanTitle {
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 黑体;
+        }
+        .juhuasuanTime {
+            font-weight: bold;
+            color: #ffc057;
+        }
+        .productPriceDiv {
+            padding: 10px;
+            color: #666666;
+            /* height: 102px; */
+            background-image: url(http://how2j.cn/tmall/img/site/priceBackground.png);
+        }
+        .gouwujuanDiv {
+            margin-top: 5px;
+        }
+        .originalDiv {
+            margin-top: 5px;
+        }
+        .originalPriceDesc {
+            color: #999999;
+            display: inline-block;
+            width: 68px;
+        }
+        .originalPrice {
+            color: #333333;
+            text-decoration: line-through;
+            font-size: 12px;
+            font-family: Arial;
+        }
+        .promotionPriceDesc {
+            color: #999999;
+            display: inline-block;
+            width: 68px;
+        }
+        .promotionPriceYuan {
+            font-size: 18px;
+            font-family: Arial;
+            color: #c40000;
+        }
+        .promotionPrice {
+            font-size: 30px;
+            color: #c40000;
+            font-family: Arial;
+            font-weight: bold;
+        }
+        .productSaleAndReviewNumber {
+            margin: 20px 0;
+            padding: 5px;
+            border-top: 1px dotted #c9c9c9;
+            border-bottom: 1px dotted #c9c9c9;
+            color: #999999;
+            font-size: 12px;
+        }
+        .productSale {
+            display: inline-block;
+            border-right: 1px solid #e5dfda;
+            width: 49%;
+            text-align: center;
+        }
+        .productReview {
+            display: inline-block;
+            width: 49%;
+            text-align: center;
+        }
+        .productSaleNumber , .productReviewNumber {
+            font-weight: bold;
+            color: #c40000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="categoryPageDiv">
+        <div class="imgAndInfo">
+            <div class="imgInimgAndInfo">
+                <img src="http://how2j.cn/tmall/img/productSingle/8619.jpg" alt="" width="100px" class="bigImg">
+                <div class="smallImageDiv">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8620.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8619.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8618.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8617.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8616.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="infoInimgAndInfo">
+            <div class="productTitle">
+                名媛2016新款女装夏两件套裤韩版雪纺七分裤阔腿裤休闲时尚套装女
+            </div>
+            <div class="productSubTitle">
+                高端定制 高档棉麻 现货即发 加购物车 领优惠卷
+            </div>
+            <div class="juhuasuan">
+                <span class="juhuasuanTitle">
+                    聚划算
+                </span>
+                <span>
+                    此商品即将参加聚划算，
+                    <span class="juhuasuanTime">1天19小时</span>
+                    后开始。
+                </span>
+            </div>
+            <div class="productPriceDiv">
+                <div class="gouwujuanDiv">
+                    <img src="http://how2j.cn/tmall/img/site/gouwujuan.png" alt="" height="16px">
+                    <span>全天猫实物商品通用</span>
+                </div>
+                <div class="originalDiv">
+                    <span class="originalPriceDesc">价格</span>
+                    <span class="originalPriceYuan">￥</span>
+                    <span class="originalPrice">
+                        399.00
+                    </span>
+                </div>
+                <div class="promotionDiv">
+                    <span class="promotionPriceDesc">促销价 </span>
+                    <span class="promotionPriceYuan">¥</span>
+                    <span class="promotionPrice">
+                        379.05
+                    </span>
+                </div>
+            </div>
+            <div class="productSaleAndReviewNumber">
+                <div class="productSale">
+                    销量
+                    <span class="productSaleNumber">50</span>
+                </div>
+                <div class="productReview">
+                    累计评价
+                    <span class="productReviewNumber">19</span>
+                </div>
+            </div>
+            <div class="productNumber">
+                <span>数量</span>
+                <span>
+                    <span class="productNumberSettingSpan">
+                        <input type="text" value="1" class="productNumberSetting">
+                    </span>
+                    <span class="arrow">
+                        <a href="#" class="uncreaseNumber">
+                            <span class="updown">
+                                <img src="http://how2j.cn/tmall/img/site/increase.png" alt="">
+                            </span>
+                        </a>
+                        <span class="updownMiddle"> </span>
+                        <a href="#" class="decreaseNumber">
+                            <span class="updown">
+                                <img src="http://how2j.cn/tmall/img/site/decrease.png" alt="">
+                            </span>
+                        </a>
+                    </span>
+                </span>
+                <span>库存66件</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
