@@ -405,11 +405,11 @@
             <div class="imgInimgAndInfo">
                 <img src="http://how2j.cn/tmall/img/productSingle/8619.jpg" alt="" width="100px" class="bigImg">
                 <div class="smallImageDiv">
-                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8620.jpg">
-                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8619.jpg">
-                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8618.jpg">
-                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8617.jpg">
-                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8616.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8620.jpg" bigImageURL="http://how2j.cn/tmall/img/productSingle/8620.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8619.jpg" bigImageURL="http://how2j.cn/tmall/img/productSingle/8619.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8618.jpg" bigImageURL="http://how2j.cn/tmall/img/productSingle/8618.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8617.jpg" bigImageURL="http://how2j.cn/tmall/img/productSingle/8617.jpg">
+                    <img width="56px" class="smallImage" src="http://how2j.cn/tmall/img/productSingle_small/8616.jpg" bigImageURL="http://how2j.cn/tmall/img/productSingle/8616.jpg">
                 </div>
             </div>
         </div>
@@ -506,7 +506,53 @@
         </div>
         <div class="clean" style="clear: both;"></div>
     </div>
-    <div class="productDetailDiv" style="display: none">
+    <script>
+        $(function(){
+            $(".smallImage").mouseenter(function(){
+                var bigImageURL = $(this).attr("bigImageURL");
+                $(".bigImg").attr("src",bigImageURL);
+            });
+            // $(".bigImg").load(function(){
+            //     $(smallImage).each(function(){
+            //         var bigImageURL = $(this).attr("bigImageURL");
+            //         img = new Image();
+            //         img.src = bigImageURL;
+                    
+            //     });
+            // });
+        });
+    </script>
+    <script>
+        $(function(){
+            var stock = 66;
+            $(".productNumberSetting").keyup(function(){
+                var num = $(".productNumberSetting").val();
+                num = parseInt(num);
+                if(isNaN(num))
+                num = 1;
+                if(num <= 0)
+                num = 1;
+                if(num >= stock)
+                num = stock;
+                $(".productNumberSetting").val(num);
+            });
+            $(".uncreaseNumber").click(function(){
+                var num = $(".productNumberSetting").val();
+                num++;
+                if(num>stock)
+                num = stock;
+                $(".productNumberSetting").val(num);
+            });
+            $(".decreaseNumber").click(function(){
+                var num = $(".productNumberSetting").val();
+                num--;
+                if(num <= 0)
+                num = 1;
+                $(".productNumberSetting").val(num);
+            });
+        });
+    </script>
+    <div class="productDetailDiv" >
         <div class="productDetailTopPart">
             <a href="#" class="productDetailTopPartSelectedLink selected">商品详情</a>
             <a href="#" class="productDetailTopReviewLink">累计评价
@@ -788,6 +834,19 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function(){
+            $(".productReviewDiv").hide();
+            $(".productDetailTopReviewLink").click(function(){
+                $(".productDetailDiv").hide();
+                $(".productReviewDiv").show();
+            });
+            $(".productReviewTopPartSelectedLink").click(function(){
+                $(".productDetailDiv").show();
+                $(".productReviewDiv").hide();
+            });
+        });
+    </script>
 </body>
 
 </html>
