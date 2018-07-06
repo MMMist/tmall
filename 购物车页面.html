@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <style>
+        .cartDiv {
+            margin: 10px auto;
+            max-width: 1013px;
+            color: black;
+        }
+
+        .cartTitlePrice {
+            color: #c40000;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 3px 0 5px;
+        }
+
+        .createOrderButton {
+            color: white;
+            width: 53px;
+            height: 25px;
+            border: 1px solid #aaaaaa;
+            border-radius: 2px;
+            background-color: #aaaaaa;
+        }
+
+        .cartProductTable {
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .selectAndImage {
+            width: 150px;
+        }
+
+        .cartProductTable th {
+            padding: 20px;
+            color: #3c3c3c;
+        }
+
+        .selectInformationg {
+            width: 429px;
+        }
+
+        .cartProductItemTR {
+            border: 1px solid #cccccc;
+        }
+
+        .cartProductImg {
+            padding: 1px;
+            border: 1px solid #eeeeee;
+            width: 80px;
+            height: 80px;
+        }
+
+        .cartProductItemIfSelected {
+            cursor: pointer;
+        }
+
+        .cartProductItemTR td {
+            padding: 20px;
+        }
+
+        .cartProductLinkOutDiv {
+            position: relative;
+            height: 80px;
+        }
+
+        .cartProductLink {
+            color: #3c3c3c;
+        }
+
+        .cartProductLink:hover {
+            color: #c40000;
+        }
+
+        .cartProductLinkInnerDiv {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .cartProductItemOringalPrice {
+            text-decoration: line-through;
+            color: #9c9c9c;
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+        }
+
+        .cartProductItemPromotionPrice {
+            color: #c40000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none !important;
+
+        }
+
+        .cartProductChangeNumberDiv {
+            border: 1px solid #e5e5e5;
+            width: 80px;
+        }
+
+        .cartProductChangeNumberDiv a {
+            width: 14px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
+
+        .orderItemNumberSetting {
+            width: 42px;
+            display: inline-block;
+            border: 1px solid #aaaaaa;
+        }
+
+        .cartProductItemSmallSumPrice {
+            color: #c40000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .deleteOrderItem {
+            color: #999;
+        }
+
+        .deleteOrderItem:hover {
+            text-decoration: none;
+            color: #c40000;
+        }
+        .cartFoot {
+            background-color: #e5e5e5;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: black;
+            line-height: 50px;
+        }
+        .selectAllItem {
+            cursor: pointer;
+        }
+        .cartSumNumber {    
+            color: #c40000;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .cartSumPrice {
+            color: #c40000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .createOrderButton {
+            color: white;
+            width: 120px;
+            height: 50px;
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cartDiv">
+        <div class="cartTitle pull-right">
+            <span>已选商品 （不含运费）</span>
+            <span class="cartTitlePrice">￥0.00</span>
+            <button class="createOrderButton">结算</button>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="cartProductList">
+            <table class="cartProductTable">
+                <thead>
+                    <tr>
+                        <th class="selectAndImage">
+                            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" alt="" class="selectAllItem"> 全选
+                        </th>
+                        <th class="selectInformationg">商品信息</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>金额</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cartProductItemTR">
+                        <td>
+                            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" alt="" class="cartProductItemIfSelected">
+                            <a href="#" style="display: none">
+                                <img src="http://how2j.cn/tmall/img/site/cartSelected.png" alt="">
+                            </a>
+                            <img src="http://how2j.cn/tmall/img/productSingle_middle/3752.jpg" alt="" class="cartProductImg">
+                        </td>
+                        <td>
+                            <div class="cartProductLinkOutDiv">
+                                <a href="#" class="cartProductLink">洁霸BF522多功能洗地机刷地机酒店家用地毯清洗机 擦地机抛光机</a>
+                                <div class="cartProductLinkInnerDiv">
+                                    <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="cartProductItemOringalPrice">￥1900.00</span>
+                            <span class="cartProductItemPromotionPrice">￥1235.00</span>
+                        </td>
+                        <td>
+                            <div class="cartProductChangeNumberDiv">
+                                <span class="orderItemStock hidden">39</span>
+                                <span class="orderItemPromotePrice hidden">1235.0</span>
+                                <a href="#" class="numberMinus">-</a>
+                                <input type="text" class="orderItemNumberSetting" value="1">
+                                <a href="#" class="numberPlus">+</a>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="cartProductItemSmallSumPrice">￥1235.00</span>
+                        </td>
+                        <td>
+                            <a href="#" class="deleteOrderItem">删除</a>
+                        </td>
+                    </tr>
+                    <tr class="cartProductItemTR">
+                        <td>
+                            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" alt="" class="cartProductItemIfSelected">
+                            <a href="#" style="display: none">
+                                <img src="http://how2j.cn/tmall/img/site/cartSelected.png" alt="">
+                            </a>
+                            <img src="http://how2j.cn/tmall/img/productSingle_middle/3182.jpg" alt="" class="cartProductImg">
+                        </td>
+                        <td>
+                            <div class="cartProductLinkOutDiv">
+                                <a href="#" class="cartProductLink">洁霸BF522多功能洗地机刷地机酒店家用地毯清洗机 擦地机抛光机</a>
+                                <div class="cartProductLinkInnerDiv">
+                                    <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="cartProductItemOringalPrice">￥889.00</span>
+                            <span class="cartProductItemPromotionPrice">￥755.62</span>
+                        </td>
+                        <td>
+                            <div class="cartProductChangeNumberDiv">
+                                <span class="orderItemStock hidden">64</span>
+                                <span class="orderItemPromotePrice hidden">755.62</span>
+                                <a href="#" class="numberMinus">-</a>
+                                <input type="text" class="orderItemNumberSetting" value="1">
+                                <a href="#" class="numberPlus">+</a>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="cartProductItemSmallSumPrice">￥755.62</span>
+                        </td>
+                        <td>
+                            <a href="#" class="deleteOrderItem">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cartFoot">
+            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" alt="" class="selectAllItem">
+            <span>全选</span>
+            <div class="pull-right">
+                <span>
+                    已选商品
+                    <span class="cartSumNumber">0</span>
+                    件
+                </span>
+                <span>合计（不含运费）</span>
+                <span class="cartSumPrice">￥0.00</span>
+                <button class="createOrderButton" style="background-color: rgb(170, 170, 170);">结  算</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
