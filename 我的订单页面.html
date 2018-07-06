@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <style>
+        a {
+            color: #999;
+        }
+        a:hover {
+            color: #c40000;
+            text-decoration: none;
+        }
+        .boughtDiv {
+            max-width: 1013px;
+            margin: 10px auto;
+        }
+        .orderType div {
+            float: left;
+            border-bottom: 2px solid #e8e8e8;
+        }
+        .orderType a {
+            border-right: 1px solid #e8e8e8;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 10px;
+            padding: 0 20px;
+            text-decoration: none;
+            float: left;
+        }
+        .orderTypeLastOne {
+            overflow: hidden;
+            float: none !important;
+        }
+        .noRightborder {
+            border-right: 0px !important;
+        }
+        .selectedOrderType {
+            
+            border-bottom: 2px #c40000 solid !important;
+        }
+        .selectedOrderType a {
+            color: #c40000;
+        }
+        .orderListTitleTable {
+            border: 1px solid #e8e8e8;
+            width: 100%;
+            margin: 20px 0;
+            background-color: #f5f5f5;
+            text-align: center;
+            height: 41px;
+        }
+        .orderListItemTable {
+            border: 2px solid #ececec;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .orderListItemFirstTR {
+            background-color: #f1f1f1;
+        }
+        .orderListItemTable td {
+            padding: 8px 10px ;
+        }
+        .orderItemWangWangGif {
+            display: inline-block;
+            width: 67px;
+            height: 22px;
+            background-image: url(http://how2j.cn/tmall/img/site/wangwang.gif);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-attachment: scroll;
+            background-position: -0px -0px;
+            position: relative;
+            top: 0px;
+            left: 2px
+        }
+        .orderItemDeleteTD {
+            text-align: right;
+        }
+        .orderListItemProductLinkOutDiv {
+            height: 80px;
+            position: relative;
+            font-size: 12px;
+        }
+        .orderListItemProductLinkInnerDiv {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .orderListItemProductOriginalPrice {
+            font-size: 14px;
+            color: #999999;
+            text-decoration: line-through;
+        }
+        .orderListItemProductPrice {
+            color: #3c3c3c;
+            font-size: 14px;
+        }
+        .orderListItemNumberTD {
+            text-align: center;
+        }
+        .orderItemOrderInfoPartTD {
+            border: 1px solid #ececec; 
+        }
+        .orderListItemProductRealPrice {
+            color: #3c3c3c;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .orderListItemProductRealPriceTD,
+        .orderListItemButtonTD {
+            text-align: center;
+        }
+        .orderListItemPriceWithTransport {
+            color: #6c6c6c;
+            font-size: 12px;
+        }
+        .orderListItemReview {
+            border: 1px solid #dcdcdc;
+            background-color: #fff;
+            border-radius: 2px;
+            color: #3c3c3c;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="boughtDiv">
+        <div class="orderType">
+           <div class="selectedOrderType">
+               <a href="#">所有订单</a>
+           </div>
+            <div>
+                <a href="#">待付款</a>
+            </div>
+            <div>
+                <a href="#">待发货</a>
+            </div>
+            <div>
+                <a href="#">待收货</a>
+            </div>
+            <div>
+                <a href="#" class="noRightborder">待评价</a>
+            </div>
+            <div class="orderTypeLastOne">
+                <a href="#" class="noRightborder">&nbsp;</a>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="orderListTitle">
+            <table class="orderListTitleTable">
+                <tbody>
+                    <tr>
+                        <td>宝贝</td>
+                        <td width="100px">单价</td>
+                        <td width="100px">数量</td>
+                        <td width="120px">实付款</td>
+                        <td width="100px">交易操作</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="orderListItem">
+            <table class="orderListItemTable">
+                <tbody>
+                    <tr class="orderListItemFirstTR">
+                        <td colspan="2">
+                            <b>2018-5-23</b>
+                            <span>订单号：201805234569875354565</span>
+                        </td>
+                        <td colspan="2">
+                            <img src="http://how2j.cn/tmall/img/site/orderItemTmall.png" alt="" width="13px">
+                            天猫商城
+                        </td>
+                        <td colspan="1">
+                            <a href="#" class="wangwanglink">
+                                <div class="orderItemWangWangGif"></div>
+                            </a>
+                        </td>
+                        <td class="orderItemDeleteTD">
+                            <a href="#" class="deleteOrderLink">
+                                <span class="orderListItemDelete glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="orderItemProductInfoPartTR">
+                        <td class="orderItemProductInfoPartTD">
+                            <img src="http://how2j.cn/tmall/img/productSingle_middle/1917.jpg" alt="" width="80px" height="80px">
+                        </td>
+                        <td class="orderItemProductInfoPartTD">
+                            <div class="orderListItemProductLinkOutDiv">
+                                <a href="#">依然美佳欧式布艺沙发组合可拆洗新款实木雕花大户型奢华别墅家具</a>
+                                <div class="orderListItemProductLinkInnerDiv">
+                                    <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                    <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                                </div>
+                            </div>
+                        </td>
+                        <td class="orderItemProductInfoPartTD" width="100px">
+                            <div class="orderListItemProductOriginalPrice">￥10,012.00</div>
+                            <div class="orderListItemProductPrice">￥7,008.40</div>
+                        </td>
+                        <td class="orderListItemNumberTD orderItemOrderInfoPartTD" width="100px">
+                            <span class="orderListItemNumber">1</span>
+                        </td>
+                        <td class="orderListItemProductRealPriceTD orderItemOrderInfoPartTD" width="120px">
+                            <div class="orderListItemProductRealPrice">￥7,008.40</div>
+                            <div class="orderListItemPriceWithTransport">(含运费：￥0.00)</div>
+                        </td>
+                        <td class="orderListItemButtonTD orderItemOrderInfoPartTD" width="100px">
+                            <a href="#">
+                                <button class="orderListItemReview">评价</button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
