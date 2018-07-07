@@ -201,6 +201,9 @@
                     $(this).attr("selectit", "selectit");
                     $(this).parents(".cartProductItemTR").css("background-color", "#fff8e1");
                 }
+                syncSelect();
+                syncCreateOrderButton();
+                calcCartSumPriceAndNumber();
             });
             $(".selectAllItem").click(function () {
                 var selectit = $(this).attr("selectit");
@@ -221,6 +224,8 @@
                         $(this).parent(".cartProductItemTR").css("background-color", "#fff8e1");
                     });
                 }
+                syncCreateOrderButton();
+                calcCartSumPriceAndNumber();
             });
             $(".orderItemNumberSetting").keyup(function () {
                 var pid = $(this).attr("pid");
@@ -234,6 +239,7 @@
                     num = 1;
                 if (num > stock)
                     num = stock;
+                syncPrice(pid,num,price);
             });
             $(".numberPlus").click(function () {
                 var pid = $(this).attr("pid");
@@ -243,6 +249,7 @@
                 num++;
                 if (num > stock);
                 num = stock;
+                syncPrice(pid,num,price);
             });
             $(".numberMinus").click(function () {
                 var pid = $(this).attr("pid");
@@ -252,6 +259,7 @@
                 num--;
                 if (num <= 0);
                 num = 1;
+                syncPrice(pid,num,price);
             });
 
         });
@@ -271,26 +279,40 @@
                 $(".createOrderButton").attr("disabled", "disabled");
             }
         };
-        function syncSelect(){
+        function syncSelect() {
             var selectAll = true;
-            $(".cartProductItemIfSelected").each(function(){
-                if("false"==$(this).attr("selectit")){
+            $(".cartProductItemIfSelected").each(function () {
+                if ("false" == $(this).attr("selectit")) {
                     selectAll = false;
                 }
             });
-            if(selectAll){
-                $(".selectAllItem").attr("src","http://how2j.cn/tmall/img/site/cartSelected.png");
-            }else{
-                $(".selectAllItem").attr("src","http://how2j.cn/tmall/img/site/cartNotSelected.png");
+            if (selectAll) {
+                $(".selectAllItem").attr("src", "http://how2j.cn/tmall/img/site/cartSelected.png");
+            } else {
+                $(".selectAllItem").attr("src", "http://how2j.cn/tmall/img/site/cartNotSelected.png");
             }
         }
-        function calcCartSumPriceAndNumber(){
+        function calcCartSumPriceAndNumber() {
             var sum = 0;
             var totalNumber = 0;
-            $(".cartProductItemIfSelected[selectit='selectit']").each(function(){
+            $("img.cartProductItemIfSelected[selectit='selectit']").each(function () {
                 var oiid = $(this).attr("oiid");
-                var price = $()
+                var price = $(".cartProductItemSmallSumPrice[oiid=" + oiid + "]").text();
+                price = price.replace(/,/g, "");
+                price = price.replace(/￥/g, "");
+                sum += new Number(price);
+                var num = $(".orderItemNumberSetting[oiid=" + oiid + "]").val();
+                totalNumber += new Number(num);
             });
+            $("span.cartSumPrice").html("￥" + formatMoney(sum));
+            $("span.cartTitlePrice").html("￥" + formatMoney(sum));
+            $("span.cartSumNumber").html(totalNumber);
+        }
+        function syncPrice(pid, num, price) {
+            $(".orderItemNumberSetting[pid=" + pid + "]").val(num);
+            var cartProductItemSmallSumPrice = formatMoney(num * price);
+            $(".cartProductItemSmallSumPrice[pid=" + pid + "]").html("￥" + cartProductItemSmallSumPrice);
+            calcCartSumPriceAndNumber();
         }
     </script>
 </head>
@@ -318,7 +340,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cartProductItemTR">
+                    <tr class="cartProductItemTR" oiid="936">
                         <td>
                             <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" selectit="false" oiid="936" class="cartProductItemIfSelected">
                             <a href="#" style="display: none">
@@ -344,19 +366,19 @@
                             <div class="cartProductChangeNumberDiv">
                                 <span class="orderItemStock hidden" pid="365">39</span>
                                 <span class="orderItemPromotePrice hidden" pid="365">1235.0</span>
-                                <a href="#" class="numberMinus">-</a>
-                                <input type="text" class="orderItemNumberSetting" value="1" oiid="936" pid="365">
-                                <a href="#" class="numberPlus">+</a>
+                                <a href="#" class="numberMinus" pid="365">-</a>
+                                <input type="text" class="orderItemNumberSetting" autocomplete="off" value="1" oiid="936" pid="365">
+                                <a href="#" class="numberPlus" pid="365" stock="75">+</a>
                             </div>
                         </td>
                         <td>
-                            <span class="cartProductItemSmallSumPrice">￥1235.00</span>
+                            <span class="cartProductItemSmallSumPrice" pid="365" oiid="936">￥1235.00</span>
                         </td>
                         <td>
-                            <a href="#" class="deleteOrderItem">删除</a>
+                            <a href="#" class="deleteOrderItem" oiid="936">删除</a>
                         </td>
                     </tr>
-                    <tr class="cartProductItemTR">
+                    <tr class="cartProductItemTR" oiid="935">
                         <td>
                             <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" selectit="false" oiid="935" class="cartProductItemIfSelected">
                             <a href="#" style="display: none">
@@ -380,25 +402,25 @@
                         </td>
                         <td>
                             <div class="cartProductChangeNumberDiv">
-                                <span class="orderItemStock hidden">64</span>
-                                <span class="orderItemPromotePrice hidden">755.62</span>
-                                <a href="#" class="numberMinus">-</a>
-                                <input type="text" class="orderItemNumberSetting" value="1" oiid="935" pid="809">
-                                <a href="#" class="numberPlus">+</a>
+                                <span class="orderItemStock hidden" pid="809">64</span>
+                                <span class="orderItemPromotePrice hidden" pid="809">755.62</span>
+                                <a href="#" class="numberMinus" pid="809">-</a>
+                                <input type="text" autocomplete="off" class="orderItemNumberSetting" value="1" oiid="935" pid="809">
+                                <a href="#" class="numberPlus" pid="809" stock="17">+</a>
                             </div>
                         </td>
                         <td>
-                            <span class="cartProductItemSmallSumPrice">￥755.62</span>
+                            <span class="cartProductItemSmallSumPrice" pid="809" oiid="935">￥755.62</span>
                         </td>
                         <td>
-                            <a href="#" class="deleteOrderItem">删除</a>
+                            <a href="#" class="deleteOrderItem" oiid="935">删除</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="cartFoot">
-            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" alt="" class="selectAllItem">
+            <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" selectit="false" class="selectAllItem">
             <span>全选</span>
             <div class="pull-right">
                 <span>
