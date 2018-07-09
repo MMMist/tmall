@@ -208,20 +208,20 @@
             $(".selectAllItem").click(function () {
                 var selectit = $(this).attr("selectit");
                 if ("selectit" == selectit) {
-                    $(this).attr("src", "http://how2j.cn/tmall/img/site/cartNotSelected.png");
-                    $(this).attr("selectit", "false");
+                    $(".selectAllItem").attr("src", "http://how2j.cn/tmall/img/site/cartNotSelected.png");
+                    $(".selectAllItem").attr("selectit", "false");
                     $(".cartProductItemIfSelected").each(function () {
                         $(this).attr("src", "http://how2j.cn/tmall/img/site/cartNotSelected.png");
                         $(this).attr("selectit", "false");
-                        $(this).parent(".cartProductItemTR").css("background-color", "#fff");
+                        $(this).parents(".cartProductItemTR").css("background-color", "#fff");
                     });
                 } else {
-                    $(this).attr("src", "http://how2j.cn/tmall/img/site/cartSelected.png");
-                    $(this).attr("selectit", "selectit");
-                    $(".ccartProductItemIfSelected").each(function () {
+                    $(".selectAllItem").attr("src", "http://how2j.cn/tmall/img/site/cartSelected.png");
+                    $(".selectAllItem").attr("selectit", "selectit");
+                    $(".cartProductItemIfSelected").each(function () {
                         $(this).attr("src", "http://how2j.cn/tmall/img/site/cartSelected.png");
                         $(this).attr("selectit", "selectit");
-                        $(this).parent(".cartProductItemTR").css("background-color", "#fff8e1");
+                        $(this).parents(".cartProductItemTR").css("background-color", "#fff8e1");
                     });
                 }
                 syncCreateOrderButton();
@@ -247,8 +247,9 @@
                 var price = $(".orderItemPromotePrice[pid" + pid + "]").text();
                 var num = $(".orderItemNumberSetting[pid" + pid + "]").val();
                 num++;
-                if (num > stock);
-                num = stock;
+                console.log(num);
+                if (num > stock)
+                    num = stock;
                 syncPrice(pid,num,price);
             });
             $(".numberMinus").click(function () {
@@ -257,8 +258,8 @@
                 var price = $(".orderItemPromotePrice[pid" + pid + "]").text();
                 var num = $(".orderItemNumberSetting[pid" + pid + "]").val();
                 num--;
-                if (num <= 0);
-                num = 1;
+                if (num <= 0)
+                    num = 1;
                 syncPrice(pid,num,price);
             });
 
