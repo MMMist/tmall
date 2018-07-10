@@ -231,8 +231,8 @@
                 var pid = $(this).attr("pid");
                 var stock = $(".orderItemStock[pid=" + pid + "]").text();
                 var price = $(".orderItemPromotePrice[pid=" + pid + "]").text();
-                var num = $(".orderItemNumberSetting[pid" + pid + "]").val();
-                num = parseInt(num);
+                var num = $(".orderItemNumberSetting[pid=" + pid + "]").val();
+                // num = parseInt(num);
                 if (isNaN(num))
                     num = 1;
                 if (num <= 0)
@@ -244,10 +244,11 @@
             $(".numberPlus").click(function () {
                 var pid = $(this).attr("pid");
                 var stock = $(".orderItemStock[pid=" + pid + "]").text();
-                var price = $(".orderItemPromotePrice[pid" + pid + "]").text();
-                var num = $(".orderItemNumberSetting[pid" + pid + "]").val();
+                var price = $(".orderItemPromotePrice[pid=" + pid + "]").text();
+                var num = $(".orderItemNumberSetting[pid=" + pid + "]").val();
+                // console.log(num);
                 num++;
-                console.log(num);
+                
                 if (num > stock)
                     num = stock;
                 syncPrice(pid,num,price);
@@ -255,8 +256,8 @@
             $(".numberMinus").click(function () {
                 var pid = $(this).attr("pid");
                 var stock = $(".orderItemStock[pid=" + pid + "]").text();
-                var price = $(".orderItemPromotePrice[pid" + pid + "]").text();
-                var num = $(".orderItemNumberSetting[pid" + pid + "]").val();
+                var price = $(".orderItemPromotePrice[pid=" + pid + "]").text();
+                var num = $(".orderItemNumberSetting[pid=" + pid + "]").val();
                 num--;
                 if (num <= 0)
                     num = 1;
