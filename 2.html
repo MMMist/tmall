@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: #31c27c;
+        }
+
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+
+        ul,
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .header {
+            position: relative;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 878px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {}
+
+        .yinyueguan {
+            display: block;
+            padding: 0 20px;
+            line-height: 90px;
+            height: 90px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .yinyueguan:hover {
+            background-color: #31c27c;
+            color: #fff;
+        }
+
+        .search-input {
+            width: 220px;
+            height: 34px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 28px;
+            left: 1372px;
+        }
+
+        .header-opt {
+            height: 90px;
+            width: 264px;
+            position: absolute;
+            top: 0;
+            left: 1614px;
+            line-height: 90px;
+        }
+
+        .lvzuan {
+            width: 112px;
+            height: 38px;
+            background-color: #31c27c;
+        }
+
+        .qqmusic_tittle {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .top-subnav {
+            height: 51px;
+            line-height: 51px;
+            border-top: 1px solid #f2f2f2;
+            padding-left: 906px;
+            margin-right: -50px;
+        }
+
+        .subnav-item {
+            margin-right: 47px;
+        }
+
+        .mod-data1 {
+            position: relative;
+            margin: 40px 0 35px 0;
+        }
+
+        .geshou {
+            width: 250px;
+            height: 250px;
+        }
+
+        .data-name {
+            position: absolute;
+            top: 32px;
+            left: 308px;
+        }
+
+        .data-desc {
+            width: 716px;
+            height: 50px;
+            position: absolute;
+            top: 82px;
+            left: 308px;
+            line-height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .data-statistic {
+            position: absolute;
+            top: 136px;
+            left: 308px;
+            font-size: 18px;
+        }
+
+        .data-statistic-item {
+            padding-right: 20px;
+            margin-right: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+        .statistic-number {
+            font-size: 25px;
+        }
+
+        .data-actions {
+            position: absolute;
+            top: 184px;
+            left: 308px;
+        }
+
+        .mod-btn-green {
+            border: 1px solid #31c27c;
+            background-color: #31c27c;
+            color: #fff;
+            border-radius: 2px;
+            font-size: 14px;
+            margin-right: 6px;
+            padding: 0 23px;
+            height: 38px;
+            line-height: 38px;
+            display: inline-block;
+            white-space: nowrap;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .js-tab {
+            position: relative;
+        }
+
+        .part-more {
+            position: absolute;
+            top: 12px;
+            right: 0;
+            font-size: 14px;
+        }
+
+        .songlist-header {
+            background-color: #fbfbfb;
+            height: 50px;
+        }
+
+        .song-name {
+            line-height: 50px;
+            padding-left: 46px;
+            width: 502.59px;
+            color: rgb(153, 153, 153);
+        }
+
+        .song-album {
+            line-height: 50px;
+            width: 248.67px;
+            padding-left: 20px;
+            color: rgb(153, 153, 153);
+        }
+
+        .song-time {
+            line-height: 50px;
+            padding-left: 292px;
+            padding-right: 40px;
+            width: 50px;
+            color: rgb(153, 153, 153);
+        }
+
+        .songlist-li {
+            height: 50px;
+        }
+
+        .songlist-number {
+            line-height: 50px;
+            color: #999;
+            width: 36px;
+        }
+
+        .bgc {
+            background-color: #fbfbfb;
+        }
+
+        .songlist-songname {
+            width: 502.59px;
+            height: 50px;
+        }
+
+        .songlist-songalbum {
+            height: 50px;
+            width: 248.656px;
+        }
+
+        .songlist-songname-text {
+            line-height: 50px;
+            padding: 10px;
+        }
+
+        .songlist-songname-text {
+            width: 502.59px;
+            height: 50px;
+        }
+
+        .songlist-album-text {
+            line-height: 50px;
+            padding-left: 30px;
+        }
+
+        .songlist-time {
+            padding-left: 322px;
+            padding-right: 40px;
+            line-height: 50px;
+            color: rgb(153, 153, 153);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header1 w">
+            <h1 class="qqmusic_tittle">
+                <a href="#">
+                    <img src="../img2/QQyinyue.png" alt="QQ音乐" class="logo">
+                </a>
+            </h1>
+            <ul class="top-nav">
+                <li class="nav-item fl">
+                    <a href="#" class="yinyueguan">音乐馆</a>
+                </li>
+                <li class="nav-item fl">
+                    <a href="#" class="yinyueguan">我的音乐</a>
+                </li>
+                <li class="nav-item fl">
+                    <a href="#" class="yinyueguan">客户端</a>
+                </li>
+                <li class="nav-item fl">
+                    <a href="#" class="yinyueguan">音乐号</a>
+                </li>
+                <li class="nav-item fl">
+                    <a href="#" class="yinyueguan">VIP</a>
+                </li>
+            </ul>
+            <input type="text" placeholder="搜索音乐、MV、歌单、用户" class="search-input">
+            <div class="header-opt">
+                <span>
+                    <a href="#">登录</a>
+                </span>
+                <a href="#" class="lvzuan">开通绿钻豪华版</a>
+            </div>
+        </div>
+        <div class="header2">
+            <ul class="top-subnav">
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">首页</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">歌手</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">专辑</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">排行榜</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">分类歌单</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">电台</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">MV</a>
+                </li>
+                <li class="subnav-item fl">
+                    <a href="#" class="subnav-link">数字专辑</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="w">
+        <div class="mod-data1">
+            <span class="">
+                <a href="#">
+                    <img src="../img2/img1.png" alt="歌手" class="geshou">
+                </a>
+            </span>
+            <div class="data-name">
+                <h1>XXX</h1>
+            </div>
+            <div class="data-desc">
+                sadsfdsaffasdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            </div>
+            <ul class="data-statistic">
+                <li class="data-statistic-item fl">
+                    <a href="#">
+                        <span>单曲</span>
+                        <strong class="statistic-number">399</strong>
+                    </a>
+                </li>
+                <li class="data-statistic-item fl">
+                    <a href="#">
+                        <span>专辑</span>
+                        <strong class="statistic-number">44</strong>
+                    </a>
+                </li>
+                <li class="data-statistic-item fl">
+                    <a href="#">
+                        <span>MV</span>
+                        <strong class="statistic-number">88</strong>
+                    </a>
+                </li>
+            </ul>
+            <div class="data-actions">
+                <a href="#" class="mod-btn-green">
+                    播放歌手热门歌曲
+                </a>
+            </div>
+        </div>
+        <div class="js-tab">
+            <div class="mod-part">
+                <div class="part-hd">
+                    <h2 class="part-tit">热门歌曲</h2>
+                    <a href="#" class="part-more">全部</a>
+                </div>
+                <div class="mod-songlist">
+                    <ul class="songlist-header">
+                        <li class="song-name fl">歌曲</li>
+                        <li class="song-album fl">专辑</li>
+                        <li class="song-time fl">时长</li>
+                    </ul>
+                    <ul id='song_list' class="songlist-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var res = {
+            "data": {
+                "curtime": "1529941839",
+                "issmarter": "1",
+                "xmusicnum": "4",
+                "picurl": [],
+                "playlist": [
+                    {
+                        "xqusic_mid": "002NkERn2LNVI4 ",
+                        "xqusic_id": "105030812",
+                        "xctype": "3",
+                        "xexpire_time": "0",
+                        "xdesc": " ",
+                        "xsong_name": "Faded ",
+                        "xsinger_name": "Alan Walker ",
+                        "xsong_url": "http://stream8.qqmusic.qq.com/117030812.wma ",
+                        "xsong_size": "1834194",
+                        "xsong_playtime": "212",
+                        "xsong_diskname": "Faded ",
+                        "xsong_dissmid": [
+                            "002Nt51E0q8Zoo ",
+                            "002Nt51E0q8Zoo "
+                        ],
+                        "xsong_dissid": "1211728",
+                        "xis_word": "0",
+                        "xcopy_right": "0",
+                        "xsinger_id": "944940",
+                        "xsinger_mid": "0020PeOh4ZaCw1 "
+                    },
+                    {
+                        "xqusic_mid": "000aB5HG4dioBi ",
+                        "xqusic_id": "4831024",
+                        "xctype": "3",
+                        "xexpire_time": "0",
+                        "xdesc": " ",
+                        "xsong_name": "海誓山盟亦会分开 ",
+                        "xsinger_name": "本兮 ",
+                        "xsong_url": "http://stream6.qqmusic.qq.com/16831024.wma ",
+                        "xsong_size": "2496570",
+                        "xsong_playtime": "289",
+                        "xsong_diskname": "无底线 ",
+                        "xsong_dissmid": [
+                            "004LrhoF44bRf2 ",
+                            "004LrhoF44bRf2 "
+                        ],
+                        "xsong_dissid": "193826",
+                        "xis_word": "0",
+                        "xcopy_right": "0",
+                        "xsinger_id": "4545",
+                        "xsinger_mid": "003LaMHm42u7qS "
+                    },
+                    {
+                        "xqusic_mid": "0019kz9c1QBWNA ",
+                        "xqusic_id": "2633764432",
+                        "xctype": "1",
+                        "xexpire_time": "0",
+                        "xdesc": " ",
+                        "xsinger_name": "文艺范电台 ",
+                        "xsong_name": "文艺范电台 ",
+                        "xsong_url": "http://img.wenyifan.net/20131221/5/1387627094890.mp3 ",
+                        "xsong_size": "0",
+                        "xsong_playtime": "0",
+                        "xsong_diskname": "0",
+                        "xsong_dissmid": "0047airw212ppN ",
+                        "xsong_dissid": "0",
+                        "xis_word": "-999",
+                        "xcopy_right": "-999",
+                        "xsinger_id": "-999"
+                    },
+                    {
+                        "xqusic_mid": "001rVHgt15aRmM ",
+                        "xqusic_id": "699379606",
+                        "xctype": "5",
+                        "xexpire_time": "0",
+                        "xdesc": " ",
+                        "xsinger_name": "soso ",
+                        "xsong_name": "8446666&#46;mp3 ",
+                        "xsong_url": "http://streamrdt.music.qq.com/8138.83a798500d5cb2b63f442ec3ee215a8d/1081067841529941839/8138.83a798500d.html ",
+                        "xsong_size": "0",
+                        "xsong_playtime": "0",
+                        "xsong_diskname": "0",
+                        "xsong_dissmid": "0047airw212ppN ",
+                        "xsong_dissid": "0",
+                        "xis_word": "-999",
+                        "xcopy_right": "-999",
+                        "xsinger_id": "-999"
+                    }
+                ],
+                "systemtime": "1529941839"
+            },
+            "type": "json",
+            "status": 200
+        }
+        function tpl (data, i) {
+            var tpl ='<li class="songlist-li">\
+                    <div class="songlist-item">\
+                        <div class="songlist-number fl">'+ i +'</div>\
+                    </div>\
+                    <div class="songlist-songname fl">\
+                        <span class="songlist-songname-text">\
+                            <a href="#">'+ data.xsong_diskname +'</a>\
+                        </span>\
+                    </div>\
+                    <div class="songlist-songalbum fl">\
+                        <span class="songlist-album-text">\
+                            <a href="#">'+ data.xsinger_name +'</a>\
+                        </span>\
+                    </div>\
+                    <div class="songlist-time fl">'+ data.xsong_playtime +'</div>\
+                </li>'
+            return tpl
+        }
+        var $song_list = $('#song_list')
+        var render =  []
+        var playList = res.data.playlist
+        var len = playList.length
+        for (var i = 0; i < len; i++) {
+                var ele = playList[i];
+                render.push(tpl(ele, i))
+        }
+        console.log(render);
+        
+        $song_list.html(render.join(''))
+    </script>
+</body>
+
+</html>

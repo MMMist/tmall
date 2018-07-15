@@ -507,52 +507,52 @@
         <div class="clean" style="clear: both;"></div>
     </div>
     <script>
-        $(function(){
-            $(".smallImage").mouseenter(function(){
+        $(function () {
+            $(".smallImage").mouseenter(function () {
                 var bigImageURL = $(this).attr("bigImageURL");
-                $(".bigImg").attr("src",bigImageURL);
+                $(".bigImg").attr("src", bigImageURL);
             });
             // $(".bigImg").load(function(){
             //     $(smallImage).each(function(){
             //         var bigImageURL = $(this).attr("bigImageURL");
             //         img = new Image();
             //         img.src = bigImageURL;
-                    
+
             //     });
             // });
         });
     </script>
     <script>
-        $(function(){
+        $(function () {
             var stock = 66;
-            $(".productNumberSetting").keyup(function(){
+            $(".productNumberSetting").keyup(function () {
                 var num = $(".productNumberSetting").val();
                 num = parseInt(num);
-                if(isNaN(num))
-                num = 1;
-                if(num <= 0)
-                num = 1;
-                if(num >= stock)
-                num = stock;
+                if (isNaN(num))
+                    num = 1;
+                if (num <= 0)
+                    num = 1;
+                if (num >= stock)
+                    num = stock;
                 $(".productNumberSetting").val(num);
             });
-            $(".uncreaseNumber").click(function(){
+            $(".uncreaseNumber").click(function () {
                 var num = $(".productNumberSetting").val();
                 num++;
-                if(num>stock)
-                num = stock;
+                if (num > stock)
+                    num = stock;
                 $(".productNumberSetting").val(num);
             });
-            $(".decreaseNumber").click(function(){
+            $(".decreaseNumber").click(function () {
                 var num = $(".productNumberSetting").val();
                 num--;
-                if(num <= 0)
-                num = 1;
+                if (num <= 0)
+                    num = 1;
                 $(".productNumberSetting").val(num);
             });
         });
     </script>
-    <div class="productDetailDiv" >
+    <div class="productDetailDiv">
         <div class="productDetailTopPart">
             <a href="#" class="productDetailTopPartSelectedLink selected">商品详情</a>
             <a href="#" class="productDetailTopReviewLink">累计评价
@@ -835,13 +835,13 @@
         </div>
     </div>
     <script>
-        $(function(){
+        $(function () {
             $(".productReviewDiv").hide();
-            $(".productDetailTopReviewLink").click(function(){
+            $(".productDetailTopReviewLink").click(function () {
                 $(".productDetailDiv").hide();
                 $(".productReviewDiv").show();
             });
-            $(".productReviewTopPartSelectedLink").click(function(){
+            $(".productReviewTopPartSelectedLink").click(function () {
                 $(".productDetailDiv").show();
                 $(".productReviewDiv").hide();
             });

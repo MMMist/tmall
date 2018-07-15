@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script type="text/javascript">
+ 
+    localStorage.setItem("coffeeType", "mocha");
+    localStorage.setItem("coffeePrice", "28");
+ 
+    verify();   //验证本地存储
+    localStorage.removeItem("coffeeType");
+    verify();   //验证coffeeType是否存在
+    localStorage.clear();
+    verify();   //验证coffeeType和coffeePrice是否存在
+ 
+    //自定义验证函数，验证coffeeType和coffeePrice的数据是否存在
+    function verify(){
+        var type = localStorage.getItem("coffeeType");
+        var price = localStorage.getItem("coffeePrice");
+        type = type ? type : '不存在';
+        price = price ? price : '不存在';
+ 
+        alert( "coffeeType: " + type + "\n\n" + "coffeePrice: " + price );
+    }
+</script>
+
+<body>
+    
+</body>
+</html>

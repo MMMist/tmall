@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-size: 12px;
+            font-family: Arial;
+        }
+
+        a {
+            color: #999;
+        }
+
+        .redColor {
+            color: #C40000 !important;
+        }
+
+        .w {
+            margin: 0 auto;
+            width: 1230px;
+        }
+
+        .top {
+            background-color: #f2f2f2;
+            padding: 5px 0;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .top span,
+        .top a {
+            color: #999;
+            margin: 0 10px;
+        }
+
+        nav.top a:hover {
+            text-decoration: none;
+            color: #c40000;
+        }
+
+        .buyPageDiv {
+            max-width: 1013px;
+            margin: 20px auto;
+        }
+
+        .address {
+            margin: 20px 5px;
+            text-align: left;
+        }
+
+        .addressTip {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .addressTable {
+            margin: 20px 20px;
+            width: 600px;
+        }
+
+        .addressTable td {
+            color: #333333;
+            vertical-align: top;
+            text-align: left;
+            height: 30px;
+            font-size: 12px;
+        }
+
+        .firstColumn {
+            width: 100px;
+        }
+
+        .redStar {
+            color: #c40000;
+            font-size: 8px;
+        }
+
+        .productListTip {
+            color: #333333;
+            font-size: 16px;
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .productListTable {
+            width: 100%;
+        }
+
+        .productListTable th {
+            color: #999999;
+            font-size: 12px;
+            font-weight: normal;
+            font-family: arial;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        .productListTableFirstColumn {
+            text-align: left !important;
+        }
+
+        .tmallbuy {
+            width: 15px;
+        }
+
+        .marketLink {
+            color: black;
+            font-size: 12px;
+            font-family: arial;
+        }
+
+        .marketLink：hover {
+            color: black;
+        }
+
+        .wangwangGif {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-image: url(http://how2j.cn/tmall/img/site/wangwang.gif);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-attachment: scroll;
+            background-position: -83px -0px;
+            position: relative;
+            top: 8px;
+            left: 2px;
+        }
+
+        .rowborder td {
+            height: 3px;
+            background-color: #b2d1ff;
+            border-right: 2px solid #fff;
+        }
+
+        .orderItemTR td {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .productListTableTbody .orderItemFirstTD {
+            text-align: left;
+        }
+
+        .orderItemImg {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #e9e9e9;
+        }
+
+        .productListTableTbody .orderItemProductInfo {
+            text-align: left;
+        }
+
+        .orderItemProductLink {
+            color: #666666;
+            display: block;
+        }
+
+        .orderItemProductLink:hover {
+            color: #666666;
+        }
+
+        .orderItemProductPrice {
+            color: #000000;
+        }
+
+        .productListTableTbody td {
+            text-align: center;
+        }
+
+        .orderItemProductNumber {
+            color: #000000;
+        }
+
+        .orderItemUniSum {
+            color: #c40000;
+        }
+
+        .orderItemFirstTD {
+            border-bottom: 0px solid black !important;
+        }
+
+        .orderItemDeliveryLabel {
+            color: #666666;
+            font-family: arial;
+            font-size: 12px;
+        }
+
+        .orderItemDeliverySelect {
+            width: 100px;
+            height: 23px;
+        }
+
+        .orderItemSumDiv {
+            padding: 20px;
+            border-top: 2px solid #b4d0ff;
+            background-color: #f2f6ff;
+            height: 50px;
+        }
+
+        .orderItemSumDiv span {
+            color: #999999;
+            font-size: 12px;
+        }
+
+        .orderItemTotalSumDiv {
+            margin: 40px;
+            height: 40px;
+        }
+
+        .orderItemTotalSumSpan {
+            color: #c40000;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .submitOrderDiv {
+            margin: 20px 0;
+            height: 40px;
+        }
+
+        .submitOrderButton {
+            width: 180px;
+            height: 40px;
+            margin: 0 10px;
+            background-color: #c40000;
+            border: 1px solid #c40000;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .leaveMessageTextarea {
+            border: 1px solid #ffad35;
+            width: 250px;
+            height: 60px;
+            resize: none;
+        }
+
+        .leaveMessageText {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .footer {
+            margin-top: 10px;
+            border-top: 1px solid #e7e7e7;
+        }
+
+        .footer_ensure {
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .footer_desc {
+            border-top: 1px solid #e7e7e7;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin: 0 20px;
+        }
+
+        .descColumn {
+            width: 20%;
+            padding-left: 15px;
+        }
+
+        .descColumnTitle {
+            color: #646464;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer_desc a {
+            display: block;
+            padding-top: 3px;
+        }
+
+        .footer_black {
+            border-top: 1px solid #e7e7e7;
+        }
+
+        .copyright {
+            background-color: black;
+            border-top: 2px solid #c40000;
+        }
+
+        .copyright .white_link {
+            padding: 10px 10px;
+            margin-left: 10px;
+        }
+
+        .copyright .white_link a {
+            color: white;
+            padding: 0 5px;
+        }
+
+        .white_link span {
+            color: white;
+        }
+
+        .license {
+            margin-left: 10px;
+            padding-bottom: 30px;
+        }
+
+        .license span {
+            color: #a4a4a4;
+        }
+
+        .copyRightYear {
+            color: #686868;
+            margin: 10px 0;
+        }
+
+        .cateye {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top">
+        <div class="w">
+            <a href="#">
+                <span class="glyphicon glyphicon-home redColor"></span>
+                天猫首页
+            </a>
+            <span>喵，欢迎来到天猫</span>
+            <a href="#">请登录</a>
+            <a href="#">免费注册</a>
+            <span class="pull-right">
+                <a href="#">我的订单</a>
+                <a href="#">
+                    <span class="glyphicon glyphicon-shopping-cart redColor"></span>
+                    购物车
+                    <strong>0</strong>件
+                </a>
+            </span>
+        </div>
+    </nav>
+    <div class="buyPageDiv">
+        <form>
+            <div class="buyFlow">
+                <img src="http://how2j.cn/tmall/img/site/simpleLogo.png" alt="" class="pull-left">
+                <img src="http://how2j.cn/tmall/img/site/buyflow.png" alt="" class="pull-right">
+                <div style="clear: both;"></div>
+            </div>
+            <div class="address">
+                <div class="addressTip">
+                    输入收货地址
+                </div>
+                <div>
+                    <table class="addressTable">
+                        <tbody>
+                            <tr>
+                                <td class="firstColumn">详细地址
+                                    <span class="redStar">*</span>
+                                </td>
+                                <td>
+                                    <textarea name="address" cols="70" placeholder="建议您如实填写详细收货地址，例如接到名称，门牌好吗，楼层和房间号等信息"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>邮政编码</td>
+                                <td>
+                                    <input type="text" name="post" placeholder="如果您不清楚邮递区号，请填写000000">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>收货人姓名
+                                    <span class="redStar">*</span>
+                                </td>
+                                <td>
+                                    <input type="text" name="receiver" placeholder="长度不超过25个字符">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>手机号码
+                                    <span class="redStar">*</span>
+                                </td>
+                                <td>
+                                    <input type="text" name="mobile" placeholder="请输入11位手机号码">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="productList">
+                <div class="productListTip">确认订单信息</div>
+                <table class="productListTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="productListTableFirstColumn">
+                                <img src="http://how2j.cn/tmall/img/site/tmallbuy.png" class="tmallbuy">
+                                <a href="#" class="marketLink">店铺：天猫店铺</a>
+                                <a href="#" class="wangwanglink">
+                                    <span class="wangwangGif"></span>
+                                </a>
+                            </th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                            <th>配送方式</th>
+                        </tr>
+                        <tr class="rowborder">
+                            <td colspan="2"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody class="productListTableTbody">
+                        <tr class="orderItemTR">
+                            <td class="orderItemFirstTD">
+                                <img src="http://how2j.cn/tmall/img/productSingle_middle/3752.jpg" alt="" class="orderItemImg">
+                            </td>
+                            <td class="orderItemProductInfo">
+                                <a href="#" class="orderItemProductLink">
+                                    洁霸BF522多功能洗地机刷地机酒店家用地毯清洗机 擦地机抛光机
+                                </a>
+                                <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                            </td>
+                            <td>
+                                <span class="orderItemProductPrice">￥1,235.00</span>
+                            </td>
+                            <td>
+                                <span class="orderItemProductNumber">4</span>
+                            </td>
+                            <td>
+                                <span class="orderItemUniSum">￥4,940.00</span>
+                            </td>
+                            <td rowspan="3">
+                                <label class="orderItemDeliveryLabel">
+                                    <input type="radio" value checked="checked"> 普通配送
+                                </label>
+                                <select class="orderItemDeliverySelect">
+                                    <option>快递 免邮费</option>
+                                    <option>顺丰包邮</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="orderItemTR">
+                            <td class="orderItemFirstTD">
+                                <img src="http://how2j.cn/tmall/img/productSingle_middle/3182.jpg" alt="" class="orderItemImg">
+                            </td>
+                            <td class="orderItemProductInfo">
+                                <a href="#" class="orderItemProductLink">
+                                    两轮平衡车双轮儿童思维漂移电动扭扭车智能滑板车成人体感代步车
+                                </a>
+                                <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                            </td>
+                            <td>
+                                <span class="orderItemProductPrice">￥755.65</span>
+                            </td>
+                            <td>
+                                <span class="orderItemProductNumber">1</span>
+                            </td>
+                            <td>
+                                <span class="orderItemUniSum">￥755.65</span>
+                            </td>
+                        </tr>
+                        <tr class="orderItemTR">
+                            <td class="orderItemFirstTD">
+                                <img src="http://how2j.cn/tmall/img/productSingle_middle/1917.jpg" alt="" class="orderItemImg">
+                            </td>
+                            <td class="orderItemProductInfo">
+                                <a href="#" class="orderItemProductLink">
+                                    依然美佳欧式布艺沙发组合可拆洗新款实木雕花大户型奢华别墅家具
+                                </a>
+                                <img src="http://how2j.cn/tmall/img/site/creditcard.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/7day.png" alt="">
+                                <img src="http://how2j.cn/tmall/img/site/promise.png" alt="">
+                            </td>
+                            <td>
+                                <span class="orderItemProductPrice">￥7,008.40</span>
+                            </td>
+                            <td>
+                                <span class="orderItemProductNumber">1</span>
+                            </td>
+                            <td>
+                                <span class="orderItemUniSum">￥7,008.40</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="orderItemSumDiv">
+                    <div class="pull-left">
+                        <span class="leaveMessageText">给卖家留言：</span>
+                        <span>
+                            <img src="http://how2j.cn/tmall/img/site/leaveMessage.png" alt="" class="leaveMessageImg">
+                        </span>
+                        <span class="leaveMessageTextareaSpan" style="display: none">
+                            <textarea name="userMessage" class="leaveMessageTextarea"></textarea>
+                            <div>
+                                <span>还可以输入200个字符</span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="pull-right">
+                        <span>店铺合计(含运费): ￥12,704.05</span>
+                    </div>
+                </div>
+                <div class="orderItemTotalSumDiv">
+                    <div class="pull-right">
+                        <span>实付款：</span>
+                        <span class="orderItemTotalSumSpan">￥12,704.05</span>
+                    </div>
+                </div>
+                <div class="submitOrderDiv">
+                    <div class="pull-right">
+                        <button class="submitOrderButton">提交订单</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        $(function () {
+            $(".leaveMessageImg").click(function () {
+                $(this).hide();
+                $(".leaveMessageTextareaSpan").show();
+                $(".orderItemSumDiv").css("height", "105px")
+            });
+        });
+    </script>
+    <div class="footer">
+        <div class="footer_ensure">
+            <a href="#">
+                <img src="http://how2j.cn/tmall/img/site/ensure.png">
+            </a>
+        </div>
+        <div class="footer_desc">
+            <div class="descColumn pull-left">
+                <span class="descColumnTitle">购物指南</span>
+                <a href="#">免费注册</a>
+                <a href="#">开通支付宝</a>
+                <a href="#">支付宝充值</a>
+            </div>
+            <div class="descColumn pull-left">
+                <span class="descColumnTitle">天猫保障</span>
+                <a href="#">发票保障</a>
+                <a href="#">售后规则</a>
+                <a href="#">缺货赔付</a>
+            </div>
+            <div class="descColumn pull-left">
+                <span class="descColumnTitle">支付方式</span>
+                <a href="#">快捷支付</a>
+                <a href="#">信用卡</a>
+                <a href="#">蚂蚁花呗</a>
+                <a href="#">货到付款</a>
+            </div>
+            <div class="descColumn pull-left">
+                <span class="descColumnTitle">商家服务</span>
+                <a href="#">商家入驻</a>
+                <a href="#">商家中心</a>
+                <a href="#">天猫智库</a>
+                <a href="#">天猫规则</a>
+                <a href="#">物流服务</a>
+                <a href="#">喵言喵语</a>
+                <a href="#">运营服务</a>
+
+            </div>
+            <div class="descColumn pull-left">
+                <span class="descColumnTitle">手机天猫</span>
+                <a href="#">
+                    <img src="http://how2j.cn/tmall/img/site/ma.png">
+                </a>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="footer_black">
+            <img src="http://how2j.cn/tmall/img/site/cateye.png" class="cateye">
+            <div class="copyright" id="copyright">
+                <div class="white_link">
+                    <a href="#nowhere">关于天猫</a>
+                    <a href="#nowhere"> 帮助中心</a>
+                    <a href="#nowhere">开放平台</a>
+                    <a href="#nowhere"> 诚聘英才</a>
+                    <a href="#nowhere">联系我们</a>
+                    <a href="#nowhere">网站合作</a>
+                    <a href="#nowhere">法律声明</a>
+                    <a href="#nowhere">知识产权</a>
+                    <a href="#nowhere"> 廉正举报 </a>
+                </div>
+                <div class="white_link">
+                    <a href="#nowhere"> 阿里巴巴集团</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 淘宝网</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere">天猫 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 聚划算</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere">全球速卖通</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere">阿里巴巴国际交易市场</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere">1688</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere">阿里妈妈</a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 阿里旅行·去啊 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 阿里云计算 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 阿里通信 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> YunOS </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 阿里旅行·去啊 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 万网 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 高德 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 优视 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 友盟 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 虾米 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 天天动听 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 来往 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 钉钉 </a>
+                    <span class="slash">|</span>
+                    <a href="#nowhere"> 支付宝 </a>
+                </div>
+                <div class="license">
+                    <span>增值电信业务经营许可证： 浙B2-20110446</span>
+                    <span>网络文化经营许可证：浙网文[2015]0295-065号</span>
+                    <span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+                    <span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
+                    <div class="copyRightYear">© 2003-2016 TMALL.COM 版权所有</div>
+                    <div>
+                        <img src="http://how2j.cn/tmall/img/site/copyRight1.jpg">
+                        <img src="http://how2j.cn/tmall/img/site/copyRight2.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -232,7 +232,7 @@
                 var stock = $(".orderItemStock[pid=" + pid + "]").text();
                 var price = $(".orderItemPromotePrice[pid=" + pid + "]").text();
                 var num = $(".orderItemNumberSetting[pid=" + pid + "]").val();
-                // num = parseInt(num);
+                num = parseInt(num);
                 if (isNaN(num))
                     num = 1;
                 if (num <= 0)
