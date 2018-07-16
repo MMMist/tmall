@@ -379,7 +379,7 @@
                 <a href="#">
                     <span class="glyphicon glyphicon-shopping-cart redColor"></span>
                     购物车
-                    <strong>0</strong>件
+                    <strong class="strongnum">0</strong>件
                 </a>
             </span>
         </div>
@@ -612,12 +612,37 @@
 
             // console.log(list);
             
+            // list.sort();
             for (var i = 0; i < list.length; i++) {
                 var ele = list[i]
                 renden.push(tpl(ele,i));
+                var bianhao = ele.productPid;
+                console.log(bianhao[1])
             }
-            console.log(renden);
+            console.log(list);
             $productTtoby.html(renden.join(''));
+            var strongnum = list.length;
+            $(".strongnum").html(strongnum);
+            
+            // var xrr = [];
+            // for(var j = 0 ; j < list.length ;){
+            //     var count = 0;
+            //     for(var k = i ; k < list.length ; k++){
+            //         if(list[j] === list[k] ){
+            //             count++
+                        
+            //         }
+            //     }
+            //     xrr.push({
+            //         product: list[j],
+            //         count: count
+            //     })
+            //     j+=count;
+            // }
+            // for (var x = 0 ; x<list.length; x++){
+            //     console.log(list[x]);
+            // }
+            
             // console.log(ele.productSrc);
             function tpl(ele,i) {
                 var lpt = '<tr class="cartProductItemTR" oiid="' + ele.productOiid +'">\

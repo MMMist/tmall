@@ -8,25 +8,27 @@
 </head>
 
 <script type="text/javascript">
- 
-    localStorage.setItem("coffeeType", "mocha");
-    localStorage.setItem("coffeePrice", "28");
- 
-    verify();   //验证本地存储
-    localStorage.removeItem("coffeeType");
-    verify();   //验证coffeeType是否存在
-    localStorage.clear();
-    verify();   //验证coffeeType和coffeePrice是否存在
- 
-    //自定义验证函数，验证coffeeType和coffeePrice的数据是否存在
-    function verify(){
-        var type = localStorage.getItem("coffeeType");
-        var price = localStorage.getItem("coffeePrice");
-        type = type ? type : '不存在';
-        price = price ? price : '不存在';
- 
-        alert( "coffeeType: " + type + "\n\n" + "coffeePrice: " + price );
+    var arr = [];
+  var result = ['2017年6月', '2017年6月', '2017年6月', '2017年5月', '2017年5月', '2017年7月', '2017年7月']
+  result.sort()
+  for (var i = 0; i < result.length; ) {
+    var count = 0;
+    for (var j = i; j < result.length; j++) {
+      if (result[i] === result[j]) {
+        count++;
+        console.log(count);
+      }
     }
+    arr.push({
+      date: result[i],
+      count: count
+    })
+    i+=count;
+  }
+
+  for (var k = 0; k < arr.length; k++) {
+    console.log(arr[k])
+  }
 </script>
 
 <body>

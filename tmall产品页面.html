@@ -1202,10 +1202,7 @@
                 $(".addCarButton").css("border-color","lightgray");
                 $(".addCarButton").css("color","black");
                 $(".addCarButton").html("已加入购物车");
-                num = $(".strongnum").text();
-                // console.log(num);
-                num++;
-                $(".strongnum").text(num);
+                
 
                 // var oiid = $(this).attr("oiid");
                 // var arr =[]
@@ -1235,8 +1232,9 @@
                 var brr = JSON.stringify(goods);
                 localStorage.setItem('goods',brr);
                 console.log(goods);
-                
-                
+                var strongnum = goods.length;
+                console.log("111"+strongnum);
+                $(".strongnum").html(strongnum);
             });
             var list = JSON.parse(localStorage.getItem('products'));
             $(".bigImg").attr("src",list.productSrc);
