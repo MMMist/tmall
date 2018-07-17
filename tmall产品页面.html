@@ -1218,31 +1218,63 @@
                 // localStorage.setItem(oiid,arr[0]);
                 // // localStorage.setItem(oiid,oiid);
                 var goods = JSON.parse(localStorage.getItem('goods'));
+                
                 if(!goods){
                     goods = [];
                 }
-                console.log(goods);
-                goods.push({
-                    productSrc: $(".bigImg").attr("src"),
-                    productTitle: $(".productTitle").html(),
-                    productPrice: $(".promotionPrice").html(),
-                    productOiid: $(".categoryPageDiv").attr("oiid"),
-                    productPid: $(".categoryPageDiv").attr("pid")
-                })
+                if (goods.length == 0) {
+                    goods.push({
+                                productSrc: $(".bigImg").attr("src"),
+                                productTitle: $(".productTitle").html(),
+                                productPrice: $(".promotionPrice").html(),
+                                productOiid: $(".categoryPageDiv").attr("oiid"),
+                                productPid: $(".categoryPageDiv").attr("pid"),
+                                count: 1
+                            })
+                } else {
+                    var hash = {};
+                    var vs = {}
+                    for (var j = 0; j < goods.length; j++) {
+                        var eke = goods[j];
+                        var Pid = eke.productPid;
+                        console.log(hash);
+                        
+                        if (hash[Pid]) {
+                            goods[vs[Pid]].count += 1
+                        } else {
+                            hash[Pid] = true
+                            vs[Pid] = j
+                            goods.push({
+                                productSrc: $(".bigImg").attr("src"),
+                                productTitle: $(".productTitle").html(),
+                                productPrice: $(".promotionPrice").html(),
+                                productOiid: $(".categoryPageDiv").attr("oiid"),
+                                productPid: $(".categoryPageDiv").attr("pid"),
+                                count: 1
+                            })
+                        }
+                    }
+                }
+
+                console.log(vs);
                 var brr = JSON.stringify(goods);
                 localStorage.setItem('goods',brr);
-                console.log(goods);
+                console.log(brr);
                 var strongnum = goods.length;
-                console.log("111"+strongnum);
+                // console.log("111"+strongnum);
                 $(".strongnum").html(strongnum);
+                
+                
             });
             var list = JSON.parse(localStorage.getItem('products'));
+            
             $(".bigImg").attr("src",list.productSrc);
             $(".productTitle").html(list.productTitle);
             $(".promotionPrice").html(list.productPrice);
             $(".categoryPageDiv").attr("oiid",list.productOiid);
             $(".categoryPageDiv").attr("pid",list.productPid);
-
+            
+            
 
         });
     </script>

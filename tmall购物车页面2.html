@@ -606,45 +606,31 @@
         // });
         'use strict'
         $(function () {
+            console.log(localStorage.getItem('goods'));
             var list = JSON.parse(localStorage.getItem('goods'));
             var $productTtoby = $("#productTtoby");
             var renden = [];
+            // var listt = localStorage.getItem('goods');
 
             // console.log(list);
             
-            // list.sort();
+            
             for (var i = 0; i < list.length; i++) {
                 var ele = list[i]
                 renden.push(tpl(ele,i));
-                var bianhao = ele.productPid;
-                console.log(bianhao[1])
-            }
+            } 
             console.log(list);
             $productTtoby.html(renden.join(''));
             var strongnum = list.length;
             $(".strongnum").html(strongnum);
             
-            // var xrr = [];
-            // for(var j = 0 ; j < list.length ;){
-            //     var count = 0;
-            //     for(var k = i ; k < list.length ; k++){
-            //         if(list[j] === list[k] ){
-            //             count++
-                        
-            //         }
-            //     }
-            //     xrr.push({
-            //         product: list[j],
-            //         count: count
-            //     })
-            //     j+=count;
-            // }
-            // for (var x = 0 ; x<list.length; x++){
-            //     console.log(list[x]);
-            // }
+
+            
             
             // console.log(ele.productSrc);
             function tpl(ele,i) {
+                var m = ele.count
+                
                 var lpt = '<tr class="cartProductItemTR" oiid="' + ele.productOiid +'">\
                         <td>\
                             <img src="http://how2j.cn/tmall/img/site/cartNotSelected.png" selectit="false" oiid="' + ele.productOiid +'" class="cartProductItemIfSelected">\
@@ -671,9 +657,9 @@
                             <div class="cartProductChangeNumberDiv">\
                                 <span class="orderItemStock hidden" pid="'+ ele.productPid +'">39</span>\
                                 <span class="orderItemPromotePrice hidden" pid="'+ ele.productPid +'">' + ele.productPrice +'</span>\
-                                <a href="#" class="numberMinus" pid="'+ ele.productPid +'">-</a>\
-                                <input type="text" class="orderItemNumberSetting" autocomplete="off" value="1" oiid="' + ele.productOiid +'" pid="'+ ele.productPid +'">\
-                                <a href="#" class="numberPlus" pid="'+ ele.productPid +'" stock="75">+</a>\
+                                <a href="javascript:void(0)" class="numberMinus" pid="'+ ele.productPid +'">-</a>\
+                                <input type="text" class="orderItemNumberSetting" autocomplete="off" value="' + m + '" oiid="' + ele.productOiid +'" pid="'+ ele.productPid +'">\
+                                <a href="javascript:void(0)" class="numberPlus" pid="'+ ele.productPid +'" stock="75">+</a>\
                             </div>\
                         </td>\
                         <td>\
@@ -697,12 +683,9 @@
                 $(".confirm").show();
             })
             $(".yes").click(function(){
-                var Oid = $(this).attr("oid");
-                list.splice(Oid,1);
-                console.log(list);
-                var crr = JSON.stringify(list);
-                localStorage.setItem('goods',crr);
-                location.reload();
+                var Oid = $(".deleteOrderItem").attr("oid");
+                
+                
             })
             $(".no").click(function(){
                 $(".confirm").hide();
